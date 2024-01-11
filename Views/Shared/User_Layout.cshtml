@@ -1,0 +1,47 @@
+﻿@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+
+    <table style="width:100%;text-align:center;background-color:orange;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;border:solid;border-radius:20px">
+
+        <tr>
+            <td>Welcome to Web AppDevelopment</td>
+        </tr>
+    </table>
+
+
+    <table style="width:100%;text-align:center;background-color:red;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;border:solid;border-radius:20px">
+        <tr>
+            <td>@Html.ActionLink("HomePage","Home","Account")</td>
+            <td>@Html.ActionLink("Display Data","DisplayData","Account")</td>
+            <td>Services</td>
+            <td>About Us</td>
+            <td>@Html.ActionLink("Logout","Login","Account")</td>
+
+            <td>Welcome Back: @HttpContextAccessor.HttpContext.Session.GetString("UName")</td>
+            <td>Login Time: @HttpContextAccessor.HttpContext.Session.GetString("LoginTime")</td>
+        </tr>
+    </table>
+    <div style="border:solid;margin:20px;padding:20px;">
+        @RenderBody()
+    </div>
+
+    <table style="width:100%;text-align:center;background-color:gray;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;border:solid;border-radius:20px">
+
+        <tr>
+            <td>
+                Copy Rights 2023
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

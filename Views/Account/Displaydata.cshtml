@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Regristration_Project.Models.DisplayModel>
+@{                  
+    ViewData["Title"] = "Displaydata";
+    Layout = "~/Views/Shared/User_Layout.cshtml";
+}
+
+
+<h1>DisplayData</h1>
+<style>
+    #customers {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+</style>
+<table id="customers">
+    <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td>Rollno</td>
+        <td>Age</td>
+        <td>Dob</td>
+        <td>Fees</td>
+        <td>Status</td>
+        <td>role</td>
+        <td>Password</td>
+        <td>EmailID</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.Name</td>
+            <td>@item.RollNo</td>
+            <td>@item.Age</td>
+            <td>@item.DOB</td>
+            <td>@item.Fees</td>
+            <td>@item.Status</td>
+            <td>@item.Role</td>
+            <td>@item.Password</td>
+            <td>@item.EmailId</td>
+        </tr>
+
+
+        <td>
+           
+            
+            @Html.ActionLink("Update","Edit","Account",new {ID=item.ID},null)
+
+            @Html.ActionLink("Delete","Delete","Account",new {ID=item.ID},new {onclick="return confirm('are u sure u wants to delete');"})
+
+
+
+        </td>
+        
+
+    }
+</table>

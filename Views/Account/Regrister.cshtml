@@ -1,0 +1,121 @@
+﻿
+@model RegristerModel
+
+@{
+    ViewBag.Title = "Register";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<!---Coding By CodingLab | www.codinglabweb.com--->
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://www.markuptag.com/bootstrap/5/css/bootstrap.min.css">
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
+
+
+<style>
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+    }
+
+    .btn {
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+
+</head>
+<body>
+
+<h2>Register</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name)
+        @Html.TextBoxFor(model => model.Name, new { @class = "form-control",placeholder="Enter name" })
+        @Html.ValidationMessageFor(model=>model.Name)
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.RollNo)
+        @Html.TextBoxFor(model => model.RollNo, new { @class = "form-control",placeholder="Enter Rollno" })
+        @Html.ValidationMessageFor(model=>model.RollNo)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Age)
+        @Html.TextBoxFor(model => model.Age, new { @class = "form-control",placeholder="Enter Age" })
+        @Html.ValidationMessageFor(model=>model.Age)
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.DOB)
+        @Html.TextBoxFor(m => m.DOB, new { @class = "form-control", type = "date",placeholder="Enter Dob" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Fees)
+        @Html.TextBoxFor(model => model.Fees, new { @class = "form-control" ,placeholder="Enter Fees" })
+    </div>
+
+        <div class="mb-3 col-md-6">
+            <label>Status<span class="text-danger">*</span></label>
+            @Html.DropDownListFor(m => m.Status, new List<SelectListItem>
+        { new SelectListItem{Text="--Select--", Value="0"},
+        new SelectListItem{Text="Active", Value="True"},
+        new SelectListItem{Text="InActive", Value="False"}
+        }, new { @class = "form-control" })
+        </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Role)
+        @Html.TextBoxFor(model => model.Role, new { @class = "form-control" ,placeholder="Enter Role" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Password)
+        @Html.PasswordFor(model => model.Password, new { @class = "form-control" ,placeholder="Enter Password"})
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EmailId)
+        @Html.TextBoxFor(model => model.EmailId, new { @class = "form-control",placeholder="Enter EmailID" })
+        @Html.ValidationMessageFor(model=>model.EmailId)
+
+    </div>
+
+  
+
+
+    <div class="col-md-5">
+        <input type="submit" class="btn btn-primary float-end" value="Submit">
+    </div>
+    <p>If you have account ,@Html.ActionLink("Login","Login","Account") </p>
+}
+</body>
+</html>
+
+
